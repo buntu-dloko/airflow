@@ -66,5 +66,5 @@ with DAG(
     # [START howto_operator_spark_sql]
     sql_job = SparkSqlOperator(sql="SELECT * FROM bar", master="local", task_id="sql_job")
 
-    submit_job >> [jdbc_to_spark_job, spark_to_jdbc_job] >> sql_job
+    sql_job >> submit_job >> [jdbc_to_spark_job, spark_to_jdbc_job]
     # [END howto_operator_spark_sql]
